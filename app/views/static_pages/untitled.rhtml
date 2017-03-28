@@ -1,0 +1,27 @@
+<h1>Encuentra tu vuelo!!!</h1>
+
+<%= form_for :flight do |f| %>
+  <p>
+    <%= f.label :From %><br>
+    <%= f.text_field :From %>
+  </p>
+
+  <p>
+    <%= f.label :To %><br>
+    <%= f.text_field :To %>
+  </p>
+
+  <p>
+    <%= f.label :Date %><br>
+    <%= f.month_field :Date %>
+  </p>
+
+  <p>
+    <%= f.label :Passengers %><br>
+    <%= f.number_field :Passengers %>
+  </p>
+ 
+  <p>
+    <%= f.submit %>
+  </p>
+<% end %>

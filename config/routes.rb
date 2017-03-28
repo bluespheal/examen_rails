@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
   root 'static_pages#home'
-  get 'static_pages/home'
+  get 'signup', to: "users#new"
+  post '/signup',  to: 'users#create'
+
+  resources :users
 end
 
 # Un User puede tener muchos Flights.
@@ -10,3 +13,4 @@ end
 # Una Booking tiene muchos Users.
 # Un User tiene muchas Bookings.
 
+#$ rails db:migrate:reset
