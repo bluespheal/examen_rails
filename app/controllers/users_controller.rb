@@ -14,7 +14,7 @@ class UsersController < ApplicationController
     if @user.save
       log_in @user
       flash[:success] = "Bienvenido a Codea Vuelos!"
-      redirect_back_or user
+      redirect_back_or root_url
     else
       render 'new'
     end
