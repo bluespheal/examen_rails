@@ -1,0 +1,39 @@
+<%unless @flights.empty?%>
+  <h1>Vuelos encontrados</h1>
+
+  <p><%= @flights.length %> vuelos disponibles From: <%= @flights.first.from %> To: <%= @flights.first.to %> </p>
+
+  <% saved = []%>
+
+  <% @flights.each_with_index do |flight, index| %>
+    <div class = "vuelos">
+      <p><%=index+1%>) No Vuelo: <%=flight.num_flight%></p>
+      <p>Date: <%=flight.date%>, Depart: <%=flight.depart%>:00:00 From: <%=flight.from%>,</p>
+      <p>To: <%=flight.to%>, Duration: <%=flight.duration%> horas, Precio: <%=flight.cost%>, Lugares: <%=60 - flight.passengers%></p>
+      <% saved << flight.id %>
+    </div>
+  <% end %>
+  <p>selecciona tu vuelo:</p>
+    <%= form_for(:flight, url: startbook_path, method: "GET") do |f| %>
+
+    <p> 
+      <%= f.hidden_field :passengers, :value => params[:flight][:passengers]%>
+    </p>
+
+    <p> 
+      <%= f.hidden_field :saved, :value => saved%>
+    </p>
+
+    <p>
+      <%= f.number_field :number %>
+    </p>
+    <p>
+      <%= f.submit "Inicair Reservación" %>
+    </p>
+  <% end %>
+
+<%else%>
+ <h1> Ningún vuelo encontrado :(</h1>
+ <%= link_to "Vuelve a buscar", root_url, class: "btn btn-lg btn-primary" %>
+
+<%end%>

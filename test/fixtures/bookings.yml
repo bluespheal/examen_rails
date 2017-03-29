@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  num_booking: MyString
+  total: 9.99
+  flight: 
+
+two:
+  num_booking: MyString
+  total: 9.99
+  flight: 

@@ -10,14 +10,36 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170328202808) do
+ActiveRecord::Schema.define(version: 20170329201404) do
+
+  create_table "bookings", force: :cascade do |t|
+    t.string   "num_booking"
+    t.decimal  "total"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  create_table "flights", force: :cascade do |t|
+    t.string   "num_flight"
+    t.date     "date"
+    t.time     "depart"
+    t.string   "from"
+    t.string   "to"
+    t.string   "duration"
+    t.integer  "cost"
+    t.decimal  "passengers"
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_flights_on_user_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string   "name"
     t.string   "email"
-    t.boolean  "admin"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
+    t.boolean  "admin",           default: false
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
     t.string   "password_digest"
     t.index ["email"], name: "index_users_on_email", unique: true
   end

@@ -103,3 +103,13 @@ input {
     color: $state-danger-text;
   }
 }
+
+.vuelos{
+  padding: 20px;
+  margin: 20px;
+  border-radius: 5px;
+  background-color: #55CCDD;
+  &:hover{
+    background-color: #77DDFF;
+  }
+}

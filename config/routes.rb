@@ -7,6 +7,12 @@ Rails.application.routes.draw do
   post   '/login',   to: 'sessions#create'
   delete '/logout',  to: 'sessions#destroy'
 
+  get '/found', to: 'flights#found'
+  get '/startbook', to: 'flights#startbook'
+
+  get '/book', to: 'bookings#bookv'
+  post '/book', to: 'bookings#bookp'
+
   resources :users
 end
 
@@ -18,3 +24,19 @@ end
 # Un User tiene muchas Bookings.
 
 #$ rails db:migrate:reset
+
+
+# class User < ApplicationRecord
+#   has_many :bookings
+#   has_many :flights, through: :bookings
+# end
+ 
+# class Booking < ApplicationRecord
+#   belongs_to :user
+#   belongs_to :flight
+# end
+ 
+# class Flight < ApplicationRecord
+#   has_one :booking
+#   has_many :users, through: :bookings
+# end

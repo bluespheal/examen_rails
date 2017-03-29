@@ -1,0 +1,42 @@
+<div class = "vuelos">
+      <p> No Vuelo: <%=@flight.num_flight%></p>
+      <p>Date: <%=@flight.date%>, Depart: <%=@flight.depart%>:00:00 From: <%=@flight.from%>,</p>
+      <p>To: <%=@flight.to%>, Duration: <%=@flight.duration%> horas, Precio: <%=@flight.cost%>, Lugares: <%=60 - @flight.passengers%></p>
+    </div>
+
+<%= form_for(:book, url: book_path, method: "POST") do |f| %>
+
+  <h3>Datos de persona 1 (Responsable)</h3>
+
+  <p>
+    <%= f.label :nombre %><br>
+    <%= f.text_field :nombre %>
+  </p>
+
+  <p>
+    <%= f.label :email %><br>
+    <%= f.text_field :email %>
+  </p>
+
+  <% ((params[:flight][:passengers]).to_i-1).times do  |i|%>
+    <h3>Datos de persona <%="#{i+2}"%></h3>
+
+    <%nombre = "nombre#{i}"%>
+    <%email = "email#{i}"%>
+
+      <p>
+        <%= f.label :nombre%><br>
+        <%= f.text_field nombre.to_sym%>
+      </p>
+
+      <p>
+        <%= f.label :email%><br>
+        <%= f.text_field email.to_sym%>
+      </p>
+
+    <%end%>
+  
+  <p>
+    <%= f.submit "Reservar Vuelo" %>
+  </p>
+<% end %>
