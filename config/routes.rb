@@ -9,6 +9,7 @@ Rails.application.routes.draw do
 
   get '/found', to: 'flights#found'
   get '/startbook', to: 'flights#startbook'
+  get '/details', to: 'flights#details'
 
   get '/book', to: 'bookings#bookv'
   post '/book', to: 'bookings#bookp'

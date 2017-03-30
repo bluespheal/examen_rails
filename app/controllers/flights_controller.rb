@@ -13,4 +13,10 @@ class FlightsController < ApplicationController
     @flight = Flight.find(saved[select])
   end
 
+  def details
+    books = Booking.where(user_id: current_user.id)
+
+    @user_flights = Flight.where(id: books.first.flight_id)
+  end
+
 end

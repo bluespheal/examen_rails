@@ -1,1 +1,7 @@
-<%= @test %>
+<h2>Reservación correcta</h2>
+
+<p> El costo total es de $ <%= @book.total %></p>
+<p> Y tu ID de reservación es la siguiente: <%= @book.num_booking %></p>
+
+<%= link_to "Return to Home", root_url, class: "btn btn-lg btn-primary" %>
+<%= link_to "View Details", details_path, class: "btn btn-lg btn-primary" %>
