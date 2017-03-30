@@ -23,17 +23,15 @@ end
   to = Faker::Address.state
   duration = rand(5..10)
   cost = [1500, 2000, 2500, 3000].sample
-  passengers = rand(50..60)
-  user = rand(1..5)
-  Flight.create!(num_flight: "10000#{n+1}",
+  passengers = rand(50..58)
+  Flight.create!(num_flight: rand(10000..99999),
                  date: date,
-                 depart: time, 
+                 depart: time,
                  from: from,
                  to: to,
                  duration: duration,
                  cost: cost,
                  passengers: passengers,
-                 user_id: user
                  )
 
 end

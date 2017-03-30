@@ -9,7 +9,6 @@ class CreateFlights < ActiveRecord::Migration[5.0]
       t.string :duration
       t.integer :cost
       t.decimal :passengers
-      t.references :user, foreign_key: true
 
       t.timestamps
     end

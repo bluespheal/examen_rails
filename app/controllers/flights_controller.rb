@@ -10,13 +10,17 @@ class FlightsController < ApplicationController
   def startbook
     p select = (params[:flight][:number]).to_i - 1
     p saved = params[:flight][:saved].split(" ")
-    @flight = Flight.find(saved[select])
+    if select >= saved.length || select < 0
+      flash[:danger] = "Selecciona un numero de vuelo válido"
+      redirect_to root_url
+    else
+      @flight = Flight.find(saved[select])
+    end
+
   end
 
   def details
-    books = Booking.where(user_id: current_user.id)
-    #Esto de abajo va en la vista, dentro de un each do, debe ser un each do dentro de otro ;3
-    @user_flights = Flight.where(id: books.first.flight_id)
+    @books = Booking.where(user_id: current_user.id)
   end
 
 end

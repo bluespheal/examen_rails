@@ -7,11 +7,11 @@
 <%= form_for(:booking, url: book_path, method: "POST") do |f| %>
 
   <p> 
+    <%= f.hidden_field :num_booking, :value => rand(10000..99999)%>
+    <%= f.hidden_field :total, :value => @flight.cost*  params[:flight][:passengers].to_i%>
     <%= f.hidden_field :flight_id, :value => @flight.id%>
     <%= f.hidden_field :user_id, :value => current_user.id%>
     <%= f.hidden_field :passengers, :value => (params[:flight][:passengers]).to_i%>
-    <%= f.hidden_field :num_booking, :value => rand(10000..99999)%>
-    <%= f.hidden_field :total, :value => @flight.cost*  params[:flight][:passengers].to_i%>
   </p>
 
   <h3>Datos de persona 1 (Responsable)</h3>
@@ -45,6 +45,6 @@
     <%end%>
   
   <p>
-    <%= f.submit "Reservar Vuelo" %>
+    <%= f.submit "Reservar Vuelo", data: { confirm: 'Realizar Reservación?' } %>
   </p>
 <% end %>

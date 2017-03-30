@@ -3,10 +3,13 @@ class CreateBookings < ActiveRecord::Migration[5.0]
     create_table :bookings do |t|
       t.string :num_booking
       t.decimal :total
-      t.references :flight, foreign_key: true
-      t. references :user, foreign_key: true
+      t.integer :user_id
+      t.integer :flight_id
 
       t.timestamps
     end
+    add_index :bookings, :user_id
+    add_index :bookings, :flight_id
+    add_index :bookings, [:user_id, :flight_id], unique: true
   end
 end

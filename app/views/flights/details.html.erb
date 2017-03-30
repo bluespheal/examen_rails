@@ -1,9 +1,20 @@
-<h1> Detalles de tus vuelos </h1>
+<h1> Detalles de tus reservaciones </h1>
 
-<% @user_flights.each_with_index do |flight, index| %>
-    <div class = "vuelos">
-      <p><%=index+1%>) No Vuelo: <%=flight.num_flight%></p>
-      <p>Date: <%=flight.date%>, Depart: <%=flight.depart%>:00:00 From: <%=flight.from%>,</p>
-      <p>To: <%=flight.to%>, Duration: <%=flight.duration%> horas, Precio: <%=flight.cost%>, Lugares: <%=60 - flight.passengers%></p>
-    </div>
+<%unless @books.empty?%>
+
+  <% @books.each do |booking| %>
+
+    <%user_flights = Flight.where(id: booking.flight_id)%>
+
+    <% user_flights.each_with_index do |flight, index| %>
+      <div class = "vuelos">
+        <p><%=index+1%>) No de Reservación: <%= booking.num_booking %></p>
+        <p> No Vuelo: <%=flight.num_flight%></p>
+        <p>Date: <%=flight.date%>, Depart: <%=flight.depart%>:00:00 From: <%=flight.from%>, To: <%=flight.to%>, Duration: <%=flight.duration%> horas,</p>
+        <p>Costo individual: <%=flight.cost%>, Costo Total: <%= booking.total %>, Asientos Reservados: <%= booking.total / flight.cost%></p>
+      </div>
+    <% end %>
   <% end %>
+  <%else%>
+  <h2>No tienes reservaciones</h2>
+<% end %>
