@@ -10,7 +10,7 @@
       <div class = "vuelos">
         <p><%=index+1%>) No de Reservación: <%= booking.num_booking %></p>
         <p> No Vuelo: <%=flight.num_flight%></p>
-        <p>Date: <%=flight.date%>, Depart: <%=flight.depart%>:00:00 From: <%=flight.from%>, To: <%=flight.to%>, Duration: <%=flight.duration%> horas,</p>
+        <p>Date: <%=flight.date%>, Depart: <%=flight.depart%>:00:00, From: <%=flight.from%>, To: <%=flight.to%>, Duration: <%=flight.duration%> horas,</p>
         <p>Costo individual: <%=flight.cost%>, Costo Total: <%= booking.total %>, Asientos Reservados: <%= booking.total / flight.cost%></p>
       </div>
     <% end %>

@@ -1,0 +1,31 @@
+ <div class="center jumbotron">
+
+    <h1>Encuentra tu vuelo!!!</h1>
+
+    <%= form_for(:flight, url: found_path, method: "GET") do |f| %>
+      <p>
+        <%= f.label :from %><br>
+        <%= f.text_field :from %>
+      </p>
+
+      <p>
+        <%= f.label :to %><br>
+        <%= f.text_field :to %>
+      </p>
+
+      <p>
+        <%= f.label :date %><br>
+        <%= f.date_field :date %>
+      </p>
+
+      <p>
+        <%= f.label :passengers %><br>
+        <%= f.number_field :passengers %>
+      </p>
+     
+      <p>
+        <%= f.submit "Encuentra tu vuelo!" %>
+      </p>
+    <% end %>
+
+  <div>

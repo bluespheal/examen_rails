@@ -4,9 +4,11 @@ class BookingsController < ApplicationController
   def bookp
     flight = Flight.find(params[:booking][:flight_id])
     @book = Booking.new(book_params)
-    if @book.save
+    if @book.save  
       flight.update_attribute(:passengers, (flight.passengers + (params[:booking][:passengers]).to_i))
       redirect_to book_path
+    else
+     
     end
   end
 
@@ -14,11 +16,14 @@ class BookingsController < ApplicationController
     @book = Booking.order("created_at").last
   end
 
-  def check_unique
+  def check_unique  
     user = current_user
     flight = Flight.find(params[:booking][:flight_id])
     if Booking.find_by(user_id: user.id, flight_id: flight.id)
       flash[:danger] = "Ya tienes una reservación en este vuelo"
+      redirect_to root_url
+    elsif params[:nombre] != current_user.name && params[:email] != current_user.email
+      flash[:danger] = "El nombre/email del responsable no coincide con el del usuario"
       redirect_to root_url
     end
   end

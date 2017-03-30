@@ -14,8 +14,6 @@ User.create!(name:  "Juan",
                password_confirmation: password)
 end
 
-
-
 15.times do |n|
   date = Date.today
   time = Time.now.hour
@@ -33,5 +31,4 @@ end
                  cost: cost,
                  passengers: passengers,
                  )
-
 end
