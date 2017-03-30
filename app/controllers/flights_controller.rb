@@ -15,7 +15,7 @@ class FlightsController < ApplicationController
 
   def details
     books = Booking.where(user_id: current_user.id)
-
+    #Esto de abajo va en la vista, dentro de un each do, debe ser un each do dentro de otro ;3
     @user_flights = Flight.where(id: books.first.flight_id)
   end
 
